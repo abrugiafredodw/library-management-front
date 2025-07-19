@@ -1,69 +1,73 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Library Management Front
 
-Currently, two official plugins are available:
+Este proyecto es una aplicación web para la gestión de libros, desarrollada con React y Vite. Permite a los usuarios registrarse, iniciar sesión y gestionar libros y usuarios dentro de una biblioteca privada. Es el frontend de un sistema de administración de libros.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Descripción
 
-## Expanding the ESLint configuration
+La aplicación permite:
+- Registro y autenticación de usuarios.
+- Visualización y gestión de libros.
+- Gestión de usuarios.
+- Navegación protegida mediante rutas privadas.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Arquitectura
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend:** React + TypeScript
+- **Gestión de rutas:** React Router
+- **Consumo de servicios:** Fetch API
+- **Contexto global:** React Context API para autenticación
+- **Estilos:** CSS Modules
+- **Estructura de carpetas:**
+  - `components/`: Componentes reutilizables (NavBar, Footer, Layout)
+  - `context/`: Contextos globales (AuthContext)
+  - `hooks/`: Custom hooks (useLogin, useRegister, useLibrary)
+  - `models/`: Tipos y modelos TypeScript
+  - `pages/`: Vistas principales (Home, Login, Register, LibraryManagement)
+  - `routes/`: Rutas y protección de rutas (PrivateRoute, RouterApp)
+  - `services/`: Servicios para interactuar con el backend (libraryService, userService)
+  - `utils/`: Utilidades y helpers
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Requisitos previos
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Node.js >= 18.x
+- npm >= 9.x
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Instalación y configuración local
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/abrugiafredodw/library-management-front.git
+   cd library-management-front
+   ```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+
+3. **Configurar variables de entorno:**
+   Si la aplicación requiere variables de entorno (por ejemplo, URL del backend), crea un archivo `.env` en la raíz del proyecto y define las variables necesarias o renombre el `.env.example`, por ejemplo:
+   ```env
+   BASE_API_URL=http://localhost:3000/api
+   ```
+
+4. **Ejecutar la aplicación en modo desarrollo:**
+   ```bash
+   npm run dev
+   ```
+   La aplicación estará disponible en `http://localhost:5173` (o el puerto que indique Vite).
+
+## Scripts disponibles
+
+- `npm run dev`: Inicia el servidor de desarrollo.
+- `npm run build`: Genera la build de producción.
+- `npm run preview`: Previsualiza la build de producción.
+
+## Autor
+
+Desarrollado por Alfredo Brugiafredo para Darwoft.
+
+---
+
+Si tienes dudas o sugerencias, puedes abrir un issue en el repositorio o contactar al autor.
