@@ -66,7 +66,7 @@ La aplicación permite:
 
 ## Autor
 
-Desarrollado por Alfredo Brugiafredo para Darwoft.
+Desarrollado por Ariel Brugiafredo para Darwoft.
 
 ---
 
